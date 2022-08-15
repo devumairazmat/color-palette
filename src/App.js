@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import Container from 'react-bootstrap/Container';
 import Button from "react-bootstrap/Button";
 import Dot from "./Dot";
 import db from "./firebase";
@@ -25,14 +26,17 @@ function App() {
   return (
     <>
     <Header/>
-      {/* Add Color */}
+    <Container >
+      <div className="text-center">
+        {/* Add Color */}
       <Button className="m-4" variant="dark" onClick={addNew}>
         Add Color
       </Button>
       <Button className="m" variant="danger" onClick={delQuery}>
         Delete Colors
       </Button>
-      <ol className="m-4 p-4">
+      </div>
+      <ol>
         {colors.map((color) => (
           <li key={color.id} className="m-2 ">
             {/* Edit color*/}
@@ -65,6 +69,7 @@ function App() {
           </li>
         ))}
       </ol>
+      </Container>
       <Footer/>
     </>
   );
