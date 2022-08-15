@@ -20,6 +20,7 @@ export const addNew = async () => {
   const payload = { name, value , timestamp: serverTimestamp() };
   const docRef = await addDoc(collectionRef, payload);
   console.log("The new Color Id is:", docRef.id);
+  prompt("The new Color  is Added", name);
 };
 
 // Edit Color Func Added to Collection
@@ -29,12 +30,14 @@ export const editColor = async (id) => {
   const docRef = doc(db, "color", id);
   const payload = { name, value ,timestamp: serverTimestamp() };
   updateDoc(docRef, payload);
+  alert("The  Color  is Added", name);
 };
 
 // Delete the color by its id
 export const delColor = async (id) => {
   const docRef = doc(db, "color", id);
   await deleteDoc(docRef);
+  alert("The  Color is Delted");
 };
 
 // Delete all the colors by their Name
@@ -51,4 +54,5 @@ export const delQuery = async () => {
     const docRef = doc(db, "color", results.id);
     await deleteDoc(docRef);
   });
+  alert("All the colors are Delted that you Entered");
 };
