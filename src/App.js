@@ -6,7 +6,7 @@ import Dot from "./Dot";
 import db from "./firebase";
 import { useEffect, useState } from "react";
 import { onSnapshot, collection } from "firebase/firestore";
-import { addNew, editColor ,delColor } from "./Utils";
+import { addNew, editColor ,delColor ,delQuery } from "./Utils";
 
 function App() {
   const [colors, setColors] = useState([{ name: "Loading...", id: "initial" }]);
@@ -22,7 +22,10 @@ function App() {
     <>
     {/* Add Color */}
       <Button className="m-4" variant="dark" onClick={addNew}>
-        Add 
+        Add Color
+      </Button>
+      <Button className="m" variant="danger" onClick={delQuery}>
+        Delete Colors
       </Button>
       <ol className="m-4 p-4">
 
