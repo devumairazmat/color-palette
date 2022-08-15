@@ -1,5 +1,5 @@
 import React from "react";
-import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc, deleteDoc } from "firebase/firestore";
 import db from "./firebase";
 
   // Btn Function Add Color To Collection
@@ -19,4 +19,9 @@ export const addNew = async () => {
     const docRef = doc(db,"color",id);
     const payload ={ name ,value}
     setDoc (docRef, payload)
+  }
+
+  export const delColor = async (id) => {
+    const docRef = doc(db,"color",id);
+    await deleteDoc (docRef);
   }
