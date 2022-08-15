@@ -7,6 +7,8 @@ import db from "./firebase";
 import { useEffect, useState } from "react";
 import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 import { addNew, editColor, delColor, delQuery } from "./Utils";
+import Footer from "./Footer";
+import Header from "./Header";
 
 function App() {
   const [colors, setColors] = useState([{ name: "Loading...", id: "initial" }]);
@@ -22,6 +24,7 @@ function App() {
 
   return (
     <>
+    <Header/>
       {/* Add Color */}
       <Button className="m-4" variant="dark" onClick={addNew}>
         Add Color
@@ -62,6 +65,7 @@ function App() {
           </li>
         ))}
       </ol>
+      <Footer/>
     </>
   );
 }
