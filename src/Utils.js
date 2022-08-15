@@ -1,23 +1,23 @@
-import React from "react";
 import {
   collection,
   addDoc,
-  setDoc,
+  updateDoc,
   doc,
   deleteDoc,
   query,
   where,
   getDocs,
+  serverTimestamp
 } from "firebase/firestore";
 import db from "./firebase";
-import { async } from "@firebase/util";
+
 
 // Btn Function Add Color To Collection
 export const addNew = async () => {
   const collectionRef = collection(db, "color");
   const name = prompt("Add new Color");
   const value = prompt("Add value of Color");
-  const payload = { name, value };
+  const payload = { name, value , timestamp: serverTimestamp() };
   const docRef = await addDoc(collectionRef, payload);
   console.log("The new Color Id is:", docRef.id);
 };
@@ -27,8 +27,8 @@ export const editColor = async (id) => {
   const name = prompt("Add new Color");
   const value = prompt("Add value of Color");
   const docRef = doc(db, "color", id);
-  const payload = { name, value };
-  setDoc(docRef, payload);
+  const payload = { name, value ,timestamp: serverTimestamp() };
+  updateDoc(docRef, payload);
 };
 
 // Delete the color by its id
