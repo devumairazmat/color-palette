@@ -32,11 +32,6 @@ function App() {
       <ol className="m-4 p-4">
         {colors.map((color) => (
           <li key={color.id} className="m-2 ">
-            <Dot color={color.value} />{" "}
-            <b>
-              {" "}
-              <u>{color.name}</u>{" "}
-            </b>
             {/* Edit color*/}
             <Button
               variant="primary"
@@ -59,6 +54,11 @@ function App() {
             >
               Delete
             </Button>
+            <Dot color={color.value} />{" "}
+            <b>
+              {" "}
+              <u>{color.name}</u>{" "}
+            </b>
           </li>
         ))}
       </ol>
